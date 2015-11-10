@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>click speed</title>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		$('#counter').click(function(e) {
+			$('#counter').html(parseInt($('#counter').html())+1);
+		});
+	});
+	</script>
+	<style>
+	body {
+		margin: 0;padding: 0;
+	}
+	#counter {
+		position: absolute;
+		top: calc(50% - 100px);
+		left: calc(50% - 100px);
+		text-align: center;
+		font-family: Arial;
+		font-size: 72px;
+		font-weight: bold;
+		border: 3px solid grey;
+		border-radius: 100px;
+		width: 200px;
+		line-height: 200px;
+		cursor: default;
+		/* make it unselectable */
+		-ms-user-select: none;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+	}
+	#counter:active {
+		background: #f9f9f9;
+	}
+	</style>
+</head>
+<body>
+	<div id="counter">0</div>
+</body>
+</html>
