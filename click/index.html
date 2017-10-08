@@ -8,9 +8,9 @@
 	$(document).ready(function() {
 		(function () {
 			clicks = []
-			$('#counter').click(function(e) {
+			$('#clicker').click(function(e) {
 				clicks.push((new Date()).getTime());
-				$('#counter').html(clicks.length);
+				$('#clicks_counter p').html(clicks.length);
 				$('#stats').html('<p>' + clicks.join('</p><p>') + '</p>');
 				if ($('#stats p:last-child').offset().top < $(window).height() + $(window).scrollTop()) {
 					$('html,body').animate({scrollTop: $('#stats p:last-child').offset().top }, 0);
@@ -23,7 +23,7 @@
 					if (clicks[idx] > (curr_timestamp - period)) break;
 				}
 				click_per_sec = ((clicks.length - idx) / period * 1000).toFixed(1);
-				$('#click_speed p').html(click_per_sec);
+				$('#click_speed').html(click_per_sec);
 			}, 100, clicks);
 		})()
 	});
@@ -33,7 +33,7 @@
 		margin: 0;padding: 0;
 		font-family: Arial;
 	}
-	#counter {
+	#click_speed {
 		position: fixed;
 		top: calc(50% - 100px);
 		left: calc(50% - 100px);
@@ -50,7 +50,7 @@
 		-moz-user-select: none;
 		-webkit-user-select: none;
 	}
-	#counter:active {
+	#click_speed:active {
 		background: #f9f9f9;
 	}
 	#stats {
@@ -68,7 +68,7 @@
 		padding: 0;
 		color: #000099;
 	}
-	#click_speed {
+	#clicks_counter {
 		position: fixed;
 		top: 0;
 		left: calc(50% - 100px);
@@ -81,7 +81,7 @@
 		color: #000099;
 		font-size: 25px;
 	}
-	#click_speed p::after {
+	#click_speed::after {
 		content: 'clicks / sec';
 		position: absolute;
 		top:0;
@@ -96,8 +96,8 @@
 	</style>
 </head>
 <body>
-	<div id="click_speed"><p>0</p></div>
-	<div id="counter">0</div>
+	<div id="clicks_counter"><p>0</p></div>
+	<div id="clicker"><div id="click_speed">0</div></div>
 	<div id="stats"></div>
 </body>
 </html>
