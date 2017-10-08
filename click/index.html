@@ -9,26 +9,35 @@
 		(function () {
 			clicks = []
 			$('#counter').click(function(e) {
-				$('#counter').html(parseInt($('#counter').html())+1);
 				clicks.push((new Date()).getTime());
-				$('#stats').html('<p>'+clicks.join('</p><p>')+'</p>');
+				$('#counter').html(clicks.length);
+				$('#stats').html('<p>' + clicks.join('</p><p>') + '</p>');
 				if ($('#stats p:last-child').offset().top < $(window).height() + $(window).scrollTop()) {
 					$('html,body').animate({scrollTop: $('#stats p:last-child').offset().top }, 0);
 				}
 			});
+			this.setInterval(function(clicks) {
+				curr_timestamp = new Date().getTime();
+				period = 5000
+				for (var idx = 0; idx < clicks.length; idx++) {
+					if (clicks[idx] > (curr_timestamp - period)) break;
+				}
+				click_per_sec = ((clicks.length - idx) / period * 1000).toFixed(1);
+				$('#click_speed p').html(click_per_sec);
+			}, 100, clicks);
 		})()
 	});
 	</script>
 	<style>
 	body {
 		margin: 0;padding: 0;
+		font-family: Arial;
 	}
 	#counter {
 		position: fixed;
 		top: calc(50% - 100px);
 		left: calc(50% - 100px);
 		text-align: center;
-		font-family: Arial;
 		font-size: 72px;
 		font-weight: bold;
 		border: 3px solid grey;
@@ -57,10 +66,37 @@
 	#stats p {
 		margin: 2px;
 		padding: 0;
+		color: #000099;
+	}
+	#click_speed {
+		position: fixed;
+		top: 0;
+		left: calc(50% - 100px);
+		width: 200px;
+		line-height: 20px;
+		border: 1px solid grey;
+		border-bottom-right-radius: 20px;
+		border-bottom-left-radius: 20px;
+		text-align: center;
+		color: #000099;
+		font-size: 25px;
+	}
+	#click_speed p::after {
+		content: 'clicks / sec';
+		position: absolute;
+		top:0;
+		width: 100px;
+		height: 11px;
+		line-height: 10px;
+		z-index: -1;
+		font-size: 11px;
+		color: #333399;
+		font-weight: bold;
 	}
 	</style>
 </head>
 <body>
+	<div id="click_speed"><p>0</p></div>
 	<div id="counter">0</div>
 	<div id="stats"></div>
 </body>
