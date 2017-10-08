@@ -1,0 +1,237 @@
+@import socicon-font-v26/socicon.css
+
+$border_width: 1px
+$border: solid $border_width black
+$border_field: solid $border_width white
+$heading_highlight: grey
+$heading_text_color: white
+$input_highlight: #F4F4F4
+$total_width: 600px
+$cell_height: 30px
+$vgutter: 10px
+$gutter: 5px
+
+=input()
+	width: 100%
+	min-height: $cell_height
+	background: $input_highlight
+	border: none
+	outline: none
+	font-size: inherit
+	display: block
+
+body
+	padding: 0
+	margin: 0
+	font-family: Arial
+
+main
+	float: left
+	margin: $vgutter
+	border: $border
+
+h1
+	background: $heading_highlight
+	color: $heading_text_color
+	text-align: center
+	margin: 0
+	padding: $vgutter
+	border-bottom: $border
+
+h2
+	@extend h1
+	font-size: 16px
+
+section
+	padding-top: $vgutter * 2
+	overflow: hidden
+
+button
+	+input
+	border: solid 1px grey
+button:focus
+	border: $border
+button:active
+	background: hsl(180, 0%, 90%)
+button:disabled
+	border-color: lightgrey
+	color: lightgrey
+
+.hidden, .templates
+	display: none
+
+.head
+	> div
+		overflow: hidden
+		clear: both
+
+	.label
+		padding: $gutter
+		width: (($total_width - ($gutter * 8)) / 4) - $border_width
+		height: $cell_height
+		float: left
+
+	.field
+		@extend .label
+		background: $input_highlight
+		border: $border_field
+
+		input, input:focus
+			+input
+
+.requirements
+	> div
+		margin: $vgutter 0
+		overflow: hidden
+		clear: both
+
+	.label
+		padding: $gutter
+		width: (($total_width - ($gutter * 8)) / 4)
+		line-height: $cell_height
+		float: left
+
+	.field
+		@extend .label
+		width: ((($total_width - ($gutter * 4)) / 4) * 3)
+		background: $input_highlight
+
+		label, select
+			+input
+			margin: $gutter 0
+
+aside
+	display: block
+	float: left
+	margin: $vgutter
+
+	.card
+		border: $border
+		overflow: hidden
+		margin-bottom: $vgutter
+
+		.head
+			margin: $gutter
+			width: $total_width - ($vgutter * 2)
+			line-height: $cell_height
+
+			.data
+				cursor: pointer
+				font-style: italic
+				font-weight: bold
+
+			input
+				+input
+				width: $total_width / 4
+				height: $cell_height - 2
+				padding: 0
+				margin: 0
+				font-weight: bold
+				display: none
+
+		.requirements
+			width: $total_width - $gutter
+			overflow: hidden
+
+			p
+				padding: $gutter
+
+				span
+					font-style: italic
+
+			.label
+				width: (($total_width - ($gutter * 4)) / 4) - $gutter
+				margin: $gutter 0
+
+			.field
+				width: ((($total_width - ($gutter * 4)) / 4) * 3) - $gutter
+				clear: right
+
+				textarea
+					+input
+					width: 100%
+					height: $cell_height * 2
+					overflow: hidden
+					margin: $gutter 0
+					padding: 0
+
+				.printable_textarea
+					@extend textarea
+					line-height: normal
+					display: none
+
+		header
+			position: relative
+
+			.removecard
+				position: absolute
+				top: 0
+				right: 0
+				font-size: 20px
+				color: white
+				border: $border_field
+				text-align: center
+				line-height: 36px
+				width: 36px
+				cursor: pointer
+			.removecard:before
+				content: "X"
+
+			.icon-socialmedia
+				position: absolute
+				top: 0
+				left: 0
+				font-size: 20px
+				color: white
+				text-align: center
+				line-height: 36px
+				width: 36px
+
+	.cardview
+		@extend .card
+
+		.head
+			.data
+				cursor: unset
+
+	#cardsfuncs
+		button
+			width: ($total_width / 2) - ($gutter * 2)
+			margin: $gutter
+			float: left
+
+@media print
+	body
+		-webkit-print-color-adjust: exact
+
+	main
+		display: none
+
+	.templates
+		display: none
+
+	aside
+		display: block
+		position: relative
+		float: none
+		width: 100%
+
+		.card
+			float: none
+			position: relative
+			width: $total_width
+			margin: $gutter auto
+			page-break-inside: avoid
+
+			.removecard
+				display: none
+
+			.requirements
+				.field
+					textarea
+						display: none
+					.printable_textarea
+						display: block
+
+	button
+		visibility: hidden

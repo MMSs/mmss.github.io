@@ -1,0 +1,97 @@
+{
+	"channels": {
+		"Channel 1" : {
+			"langs" : ["fa", "en"],
+			"socialmedia" : ["facebook", "twitter", "google", "youtube", "instagram"]
+		},
+		"Channel 2" : {
+			"langs" : ["fa", "ps", "en"],
+			"socialmedia" : ["facebook", "twitter", "google", "youtube", "instagram"]
+		},
+		"Channel 3" : {
+			"langs" : ["ar", "en"],
+			"socialmedia" : ["facebook", "twitter", "google", "youtube", "instagram"]
+		},
+		"Channel 4" : {
+			"langs" : ["am", "en"],
+			"socialmedia" : ["facebook", "twitter", "google", "youtube", "instagram"]
+		},
+		"Magazine" : {
+			"langs" : ["en"],
+			"socialmedia" : ["facebook", "twitter", "google", "youtube", "instagram"]
+		},
+		"Channel India" : {
+			"langs" : ["en"],
+			"socialmedia" : ["facebook", "twitter", "google", "youtube", "instagram"]
+		}
+	},
+
+	"langs" : {
+		"en": "English",
+		"fa": "Farsi / Dari",
+		"ps": "Pashto",
+		"am": "Amharic",
+		"ar": "Arabic"
+	},
+
+	"socialmedia" : {
+		"facebook" : {
+			"title" : "Facebook",
+			"imagetypes" : {
+				"image": "1800x1800",
+				"banner": "1920x711",
+				"profile": "1200x1200"
+			}
+		},
+		"twitter" : {
+			"title" : "Twitter",
+			"imagetypes" : {
+				"image": "1024x512",
+				"banner": "1500x500",
+				"profile": "1200x1200"
+			}
+		},
+		"google" : {
+			"title" : "Google +",
+			"imagetypes" : {
+				"image": "1925x1083",
+				"banner": "2120x1992",
+				"profile": "1200x1200"
+			}
+		},
+		"youtube" : {
+			"title" : "Youtube",
+			"imagetypes" : {
+				"banner": "2120x1193",
+				"profile": "1200x1200",
+				"thumbnail": "1280x720"
+			}
+		},
+		"instagram" : {
+			"title" : "Instagram",
+			"imagetypes" : {
+				"image": "1800x1800",
+				"profile": "1200x1200"
+			}
+		}
+	},
+
+	"imagetypes" : {
+		"image" : {
+			"title": "Image",
+			"value": "an image"
+		},
+		"banner" : {
+			"title": "Banner",
+			"value": "a banner"
+		},
+		"profile" : {
+			"title": "Profile Picture",
+			"value": "a profile picture"
+		},
+		"thumbnail" : {
+			"title": "Thumbnail",
+			"value": "a thumbnail"
+		}
+	}
+}
