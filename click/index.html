@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>click speed</title>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script>
@@ -10,6 +11,7 @@
 			clicks = []
 			$('#clicker').click(function(e) {
 				clicks.push((new Date()).getTime());
+				navigator.vibrate(100);
 				$('#clicks_counter p').html(clicks.length);
 				$('#stats').html('<p>' + clicks.join('</p><p>') + '</p>');
 				if ($('#stats p:last-child').offset().top < $(window).height() + $(window).scrollTop()) {
@@ -40,6 +42,7 @@
 		text-align: center;
 		font-size: 72px;
 		font-weight: bold;
+		background: #fff;
 		border: 3px solid grey;
 		border-radius: 100px;
 		width: 200px;
